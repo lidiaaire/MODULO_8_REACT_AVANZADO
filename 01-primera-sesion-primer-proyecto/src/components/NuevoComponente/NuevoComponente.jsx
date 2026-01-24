@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useMemo } from "react";
+import { useRef, useState, useEffect, useMemo, useCallback } from "react";
 import { calcularPrecioTotal } from "./NuevoComponenteUtils";
 
 export default function NuevoComponente() {
@@ -13,6 +13,27 @@ export default function NuevoComponente() {
     () => calcularPrecioTotal(productos),
     [productos],
   );
+
+  // Lo de abajo es lo mismo que el useMemo
+  //  const totalFactura = useRef(0);
+
+  // useEffect(() => {
+  // totalFactura.current = calcularFacturaFn(productos);
+  //});
+
+  const calcularFacturaFn = useCallback(
+    (productos) => calcularPrecioTotal(productos),
+    [],
+  );
+
+  const calcularPrecioTotalFn = (productos) => {
+    let sum = 0;
+    productos.forEach((value, index, array) => {
+      sum = sum + value.precio;
+    });
+
+    return sum;
+  };
 
   const addCounter = () => {
     counter.current = counter.current + 1;
