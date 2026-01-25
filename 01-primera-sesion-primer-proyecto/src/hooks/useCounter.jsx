@@ -1,10 +1,20 @@
+// Nuestro primer Hook
+// Va a hacer las veces de un contador
+
 import { useState } from "react";
 
-export function useCounter(initialValue = 0) {
-  const [count, setCount] = useState(initialValue);
+export function useCounter(initialiteCounter) {
+  const [count, setCounter] = useState(initialiteCounter);
 
-  const handleIncrement = () => setCount((c) => c + 1);
-  const handleDecrement = () => setCount((c) => c - 1);
+  const handleIncrement = () => {
+    let countAux = count + 1;
+    setCounter(countAux);
+  };
+
+  const handleDecrement = () => {
+    let countAux = count - 1;
+    setCounter(countAux);
+  };
 
   return {
     count,
