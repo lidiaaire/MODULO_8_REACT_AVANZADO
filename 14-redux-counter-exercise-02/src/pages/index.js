@@ -1,4 +1,4 @@
-"use client";
+
 
 import CounterComponent from "@/components/Counter/CounterComponent";
 import UserComponent from "@/components/User/UserComponent";
